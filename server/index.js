@@ -4,7 +4,15 @@ const cors = require("cors");
 const UserModel = require("./models/Users");
 
 const app = express();
-app.use(cors());
+
+app.use(
+  cors({
+    origin: "https://node-crud-app-bn63.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  })
+);
+
+// app.use(cors());
 app.use(express.json());
 
 mongoose.connect(process.env.MONGO_URI);
